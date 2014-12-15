@@ -8,8 +8,9 @@ import java.util.List;
 import model.Food;
 
 import com.opencsv.CSVReader;
+import com.thoughtworks.xstream.XStream;
 
-public class CsvToXml {
+public class App {
 	private static String[] titles = null;
 
 	public static String[] getTitles() {
@@ -17,10 +18,10 @@ public class CsvToXml {
 	}
 
 	public static void setTitles(String[] titles) {
-		CsvToXml.titles = titles;
+		App.titles = titles;
 	}
 
-	public List<String[]> csvToList() {
+	public static List<String[]> csvToList() {
 		List<String[]> entries = null;
 		try {
 			CSVReader reader = new CSVReader(new FileReader(
@@ -34,7 +35,7 @@ public class CsvToXml {
 		return entries;
 	}
 
-	public List<Food> getFoodList(List<String[]> entries) {
+	public static List<Food> getFoodList(List<String[]> entries) {
 		List<Food> foods = new ArrayList<Food>();
 		Food food = new Food();
 		for (int i = 1; i < entries.size(); i++) {
@@ -42,5 +43,18 @@ public class CsvToXml {
 			foods.add(food);
 		}
 		return foods;
+	}
+
+	public static String ListtoXml() {
+		List<String[]> entries = csvToList();
+		List<Food> foodList = getFoodList(entries);
+		XStream stream = new XStream();
+		String xml = stream.toXML(foodList);
+		return xml;
+	}
+
+	public static void main(String[] args) {
+		String xml = ListtoXml();
+		System.out.println(xml);
 	}
 }

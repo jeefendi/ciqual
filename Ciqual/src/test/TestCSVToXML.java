@@ -3,12 +3,12 @@ package test;
 import java.util.ArrayList;
 import java.util.List;
 
-import Util.CsvToXml;
+import Util.App;
 
 public class TestCSVToXML {
 
 	public static void main(String[] args) {
-		CsvToXml csvToXml = new CsvToXml();
+		App csvToXml = new App();
 		List<String[]> entries = new ArrayList<String[]>();
 		entries = csvToXml.csvToList();
 		for (String[] s : entries) {

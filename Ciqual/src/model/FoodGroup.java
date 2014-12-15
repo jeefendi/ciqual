@@ -1,14 +1,14 @@
 package model;
 
 public class FoodGroup {
-	private int id;
+	private String id;
 	private String desc;
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -20,7 +20,7 @@ public class FoodGroup {
 		this.desc = desc;
 	}
 
-	public FoodGroup(int id, String desc) {
+	public FoodGroup(String id, String desc) {
 		this.id = id;
 		this.desc = desc;
 	}
