@@ -5,7 +5,7 @@ import java.util.Map;
 public class Food {
 	private int id;
 	private String name;
-	private Map<Nutrient, Float> mapNutriments;
+	private Map<Nutrient, Object> mapNutriments;
 	private FoodGroup fGroup;
 
 	public int getId() {
@@ -24,11 +24,11 @@ public class Food {
 		this.name = name;
 	}
 
-	public Map<Nutrient, Float> getMapNutriments() {
+	public Map<Nutrient, Object> getMapNutriments() {
 		return mapNutriments;
 	}
 
-	public void setMapNutriments(Map<Nutrient, Float> mapNutriments) {
+	public void setMapNutriments(Map<Nutrient, Object> mapNutriments) {
 		this.mapNutriments = mapNutriments;
 	}
 
@@ -40,11 +40,10 @@ public class Food {
 		this.fGroup = fGroup;
 	}
 
-	public Food(int id, String name, Map<Nutrient, Float> mapNutriments,
-			FoodGroup fGroup) {
+	public Food(int id, String name, Map<Nutrient, Object> map, FoodGroup fGroup) {
 		this.id = id;
 		this.name = name;
-		this.mapNutriments = mapNutriments;
+		this.mapNutriments = map;
 		this.fGroup = fGroup;
 	}
 

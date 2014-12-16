@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Food;
+import model.Nutrient;
 
 import com.opencsv.CSVReader;
 import com.thoughtworks.xstream.XStream;
@@ -49,6 +50,8 @@ public class App {
 		List<String[]> entries = csvToList();
 		List<Food> foodList = getFoodList(entries);
 		XStream stream = new XStream();
+		stream.alias("Food", Food.class);
+		stream.alias("Nutrient", Nutrient.class);
 		String xml = stream.toXML(foodList);
 		return xml;
 	}
