@@ -8,9 +8,8 @@ import Util.App;
 public class TestCSVToXML {
 
 	public static void main(String[] args) {
-		App csvToXml = new App();
 		List<String[]> entries = new ArrayList<String[]>();
-		entries = csvToXml.csvToList();
+		entries = App.csvToList();
 		for (String[] s : entries) {
 			for (String ss : s) {
 				System.out.println(ss);

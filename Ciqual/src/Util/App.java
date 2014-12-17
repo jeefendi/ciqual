@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Food;
-import model.Nutrient;
 
 import com.opencsv.CSVReader;
 import com.thoughtworks.xstream.XStream;
@@ -50,8 +49,7 @@ public class App {
 		List<String[]> entries = csvToList();
 		List<Food> foodList = getFoodList(entries);
 		XStream stream = new XStream();
-		stream.alias("Food", Food.class);
-		stream.alias("Nutrient", Nutrient.class);
+		stream.processAnnotations(Food.class);
 		String xml = stream.toXML(foodList);
 		return xml;
 	}
@@ -59,5 +57,11 @@ public class App {
 	public static void main(String[] args) {
 		String xml = ListtoXml();
 		System.out.println(xml);
+		/*
+		 * try { PrintWriter writer = new PrintWriter("Resources/ciqual.xml");
+		 * writer.println(xml); writer.close(); } catch (FileNotFoundException
+		 * e) { System.out.println("Error creating PW file ciqual.xml"); }
+		 */
+
 	}
 }

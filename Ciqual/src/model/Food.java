@@ -2,9 +2,14 @@ package model;
 
 import java.util.Map;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+@XStreamAlias("Food")
 public class Food {
 	private int id;
 	private String name;
+	@XStreamImplicit(itemFieldName = "anis")
 	private Map<Nutrient, Object> mapNutriments;
 	private FoodGroup fGroup;
 
@@ -40,7 +45,7 @@ public class Food {
 		this.fGroup = fGroup;
 	}
 
-	public Food(int id, String name, Map<Nutrient, Object> map, FoodGroup fGroup) {
+	public Food(int id, String name, FoodGroup fGroup, Map<Nutrient, Object> map) {
 		this.id = id;
 		this.name = name;
 		this.mapNutriments = map;
