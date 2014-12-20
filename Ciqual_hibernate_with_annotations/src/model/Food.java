@@ -2,8 +2,6 @@ package model;
 
 import java.util.Map;
 
-import javax.persistence.Entity;
-
 @Entity
 public class Food {
 	private int id;
