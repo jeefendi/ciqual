@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.jboss.ide.eclipse.as.classpath.core.javaee-5.0"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/OpenCSV"/>
 	<classpathentry kind="lib" path="libs/opencsv-3.1.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate/hibernate-core-4.3.7.Final.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate/hibernate-jpa-2.1-api-1.0.0.Final.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
