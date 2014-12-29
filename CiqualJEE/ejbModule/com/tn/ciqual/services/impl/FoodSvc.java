@@ -3,6 +3,7 @@ package com.tn.ciqual.services.impl;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import com.tn.ciqual.model.Food;
 import com.tn.ciqual.services.interfaces.FoodSvcRemote;
@@ -13,6 +14,7 @@ import com.tn.ciqual.services.interfaces.FoodSvcRemote;
 @Stateless
 @LocalBean
 public class FoodSvc implements FoodSvcRemote {
+	@PersistenceContext
 	private static EntityManager entityManager;
 
 	/**
@@ -33,6 +35,34 @@ public class FoodSvc implements FoodSvcRemote {
 			e.printStackTrace();
 		}
 		return b;
+	}
+
+	@Override
+	public boolean removeFoodById(int id) {
+		boolean b = false;
+		try {
+			entityManager.remove(findFoodById(id));
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
+	}
+
+	@Override
+	public Food findFoodById(int id) {
+		Food foodFound = null;
+		try {
+			foodFound = entityManager.find(Food.class, id);
+		} catch (Exception e) {
+			System.out.println("Food not found !");
+		}
+		return foodFound;
+	}
+
+	public static void main(String[] args) {
+		FoodSvc foodSvc = new FoodSvc();
+		Food food = foodSvc.findFoodById(2);
+		System.out.println(food.getORIGFDNM());
 	}
 
 }

@@ -2,6 +2,7 @@ package com.tn.ciqual.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -39,7 +40,7 @@ public class Food implements Serializable {
 		this.ORIGFDNM = ORIGFDNM;
 	}
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	public FoodGroup getFoodGroup() {
 		return foodGroup;
 	}
@@ -48,4 +49,16 @@ public class Food implements Serializable {
 		this.foodGroup = foodGroup;
 	}
 
+	public Food(int oRIGFDCD, String oRIGFDNM, FoodGroup foodGroup) {
+		ORIGFDCD = oRIGFDCD;
+		ORIGFDNM = oRIGFDNM;
+		this.foodGroup = foodGroup;
+	}
+
+	public Food(int oRIGFDCD, String oRIGFDNM) {
+		ORIGFDCD = oRIGFDCD;
+		ORIGFDNM = oRIGFDNM;
+	}
+
+	
 }
