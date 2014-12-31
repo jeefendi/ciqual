@@ -1,7 +1,7 @@
 package com.tn.ciqual.client.test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.tn.ciqual.model.Food;
 import com.tn.ciqual.model.FoodGroup;
@@ -21,7 +21,7 @@ public class TestFoodGroupSvc {
 		foodGroup.setname("foodGroup1");
 		Food food = new Food();
 		food.setname("food3");
-		List<Food> foods = new ArrayList<Food>();
+		Set<Food> foods = new TreeSet<Food>();
 		foods.add(food);
 		foodGroup.linkFoodsToFoodGroup(foods);
 		foodGroupSvcRemote.addFoodGroup(foodGroup);

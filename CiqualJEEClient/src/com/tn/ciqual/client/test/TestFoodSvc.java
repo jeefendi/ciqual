@@ -23,6 +23,7 @@ public class TestFoodSvc {
 		food1.setname("food1");
 		food1.setFoodGroup(foodGroup);
 		food2.setname("food2");
+		food2.setFoodGroup(foodGroup);
 		foodSvcRemote.addFood(food1);
 		foodSvcRemote.addFood(food2);
 
