@@ -59,4 +59,10 @@ public class NutritiveValue implements Serializable {
 		this.nutrient = nutrient;
 	}
 
+	@Override
+	public String toString() {
+		return "NutritiveValue [nutritionId=" + nutritionId + ", food=" + food
+				+ ", nutrient=" + nutrient + "]";
+	}
+
 }

@@ -24,13 +24,13 @@ public class FoodSvc implements FoodSvcRemote {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	@Override
 	public boolean addFood(Food food) {
 		boolean b = false;
 		try {
 			entityManager.persist(food);
 			b = true;
+			System.out.println("Food sucessfully added :" + food);
 		} catch (Exception e) {
 			System.out.println("Error adding food");
 			e.printStackTrace();

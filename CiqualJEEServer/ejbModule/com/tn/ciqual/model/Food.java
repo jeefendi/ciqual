@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -20,13 +23,14 @@ public class Food implements Serializable {
 	private String name;
 	private static final long serialVersionUID = 1L;
 	private FoodGroup foodGroup;
-	private List<NutritiveValue> nutritions;
+	private List<NutritiveValue> nutritiveValues;
 
 	public Food() {
 		super();
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getid() {
 		return this.id;
 	}
@@ -53,20 +57,26 @@ public class Food implements Serializable {
 	}
 
 	public Food(int id, String name, FoodGroup foodGroup,
-			List<NutritiveValue> nutritions) {
+			List<NutritiveValue> nutritiveValues) {
 		this.id = id;
 		this.name = name;
 		this.foodGroup = foodGroup;
-		this.nutritions = nutritions;
+		this.nutritiveValues = nutritiveValues;
 	}
 
-	@OneToMany(mappedBy = "food")
-	public List<NutritiveValue> getNutritions() {
-		return nutritions;
+	@OneToMany(mappedBy = "food", fetch = FetchType.EAGER)
+	public List<NutritiveValue> getnutritiveValues() {
+		return nutritiveValues;
 	}
 
-	public void setNutritions(List<NutritiveValue> nutritions) {
-		this.nutritions = nutritions;
+	public void setnutritiveValues(List<NutritiveValue> nutritiveValues) {
+		this.nutritiveValues = nutritiveValues;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Food [id=" + id + ", name=" + name + ", foodGroup=" + foodGroup
+				+ ", nutritiveValues=" + nutritiveValues + "]";
+	}
+
 }
