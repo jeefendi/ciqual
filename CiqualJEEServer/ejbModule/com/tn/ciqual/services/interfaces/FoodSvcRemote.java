@@ -13,4 +13,6 @@ public interface FoodSvcRemote {
 
 	Food findFoodById(int id);
 
+	boolean updateFood(Food food);
+
 }

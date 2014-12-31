@@ -1,11 +1,13 @@
 package com.tn.ciqual.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * Entity implementation class for Entity: Food
@@ -14,30 +16,31 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Food implements Serializable {
 
-	private int ORIGFDCD;
-	private String ORIGFDNM;
+	private int id;
+	private String name;
 	private static final long serialVersionUID = 1L;
 	private FoodGroup foodGroup;
+	private List<NutritiveValue> nutritions;
 
 	public Food() {
 		super();
 	}
 
 	@Id
-	public int getORIGFDCD() {
-		return this.ORIGFDCD;
+	public int getid() {
+		return this.id;
 	}
 
-	public void setORIGFDCD(int ORIGFDCD) {
-		this.ORIGFDCD = ORIGFDCD;
+	public void setid(int id) {
+		this.id = id;
 	}
 
-	public String getORIGFDNM() {
-		return this.ORIGFDNM;
+	public String getname() {
+		return this.name;
 	}
 
-	public void setORIGFDNM(String ORIGFDNM) {
-		this.ORIGFDNM = ORIGFDNM;
+	public void setname(String name) {
+		this.name = name;
 	}
 
 	@ManyToOne(cascade = CascadeType.PERSIST)
@@ -49,16 +52,21 @@ public class Food implements Serializable {
 		this.foodGroup = foodGroup;
 	}
 
-	public Food(int oRIGFDCD, String oRIGFDNM, FoodGroup foodGroup) {
-		ORIGFDCD = oRIGFDCD;
-		ORIGFDNM = oRIGFDNM;
+	public Food(int id, String name, FoodGroup foodGroup,
+			List<NutritiveValue> nutritions) {
+		this.id = id;
+		this.name = name;
 		this.foodGroup = foodGroup;
+		this.nutritions = nutritions;
 	}
 
-	public Food(int oRIGFDCD, String oRIGFDNM) {
-		ORIGFDCD = oRIGFDCD;
-		ORIGFDNM = oRIGFDNM;
+	@OneToMany(mappedBy = "food")
+	public List<NutritiveValue> getNutritions() {
+		return nutritions;
 	}
 
+	public void setNutritions(List<NutritiveValue> nutritions) {
+		this.nutritions = nutritions;
+	}
 	
 }

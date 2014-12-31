@@ -24,6 +24,7 @@ public class FoodSvc implements FoodSvcRemote {
 		// TODO Auto-generated constructor stub
 	}
 
+
 	@Override
 	public boolean addFood(Food food) {
 		boolean b = false;
@@ -59,10 +60,15 @@ public class FoodSvc implements FoodSvcRemote {
 		return foodFound;
 	}
 
-	public static void main(String[] args) {
-		FoodSvc foodSvc = new FoodSvc();
-		Food food = foodSvc.findFoodById(2);
-		System.out.println(food.getORIGFDNM());
+	@Override
+	public boolean updateFood(Food food) {
+		boolean b = false;
+		try {
+			entityManager.merge(food);
+			b = true;
+		} catch (Exception e) {
+		}
+		return b;
 	}
 
 }

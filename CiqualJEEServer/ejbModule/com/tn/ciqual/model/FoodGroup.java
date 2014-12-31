@@ -15,8 +15,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class FoodGroup implements Serializable {
 
-	private int ORIGGPCD;
-	private String ORIGGPFR;
+	private int id;
+	private String name;
 	private static final long serialVersionUID = 1L;
 	private List<Food> foods;
 
@@ -25,20 +25,20 @@ public class FoodGroup implements Serializable {
 	}
 
 	@Id
-	public int getORIGGPCD() {
-		return this.ORIGGPCD;
+	public int getid() {
+		return this.id;
 	}
 
-	public void setORIGGPCD(int ORIGGPCD) {
-		this.ORIGGPCD = ORIGGPCD;
+	public void setid(int id) {
+		this.id = id;
 	}
 
-	public String getORIGGPFR() {
-		return this.ORIGGPFR;
+	public String getname() {
+		return this.name;
 	}
 
-	public void setORIGGPFR(String ORIGGPFR) {
-		this.ORIGGPFR = ORIGGPFR;
+	public void setname(String name) {
+		this.name = name;
 	}
 
 	@OneToMany(mappedBy = "foodGroup", cascade = CascadeType.PERSIST)
@@ -50,15 +50,15 @@ public class FoodGroup implements Serializable {
 		this.foods = foods;
 	}
 
-	public FoodGroup(int oRIGGPCD, String oRIGGPFR, List<Food> foods) {
-		ORIGGPCD = oRIGGPCD;
-		ORIGGPFR = oRIGGPFR;
+	public FoodGroup(int id, String name, List<Food> foods) {
+		this.id = id;
+		this.name = name;
 		this.foods = foods;
 	}
 
-	public FoodGroup(int oRIGGPCD, String oRIGGPFR) {
-		ORIGGPCD = oRIGGPCD;
-		ORIGGPFR = oRIGGPFR;
+	public FoodGroup(int id, String name) {
+		this.id = id;
+		this.name = name;
 	}
 
 	public void linkFoodsToFoodGroup(List<Food> foods) {
